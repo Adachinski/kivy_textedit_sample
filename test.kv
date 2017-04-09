@@ -1,0 +1,54 @@
+#-*- coding: utf-8 -*-
+
+
+TextWidget:
+
+<TextWidget>:
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Label:
+            size_hint_y: 5
+
+            id: label1
+            font_size: 68
+            text: root.text
+       
+        BoxLayout:
+            size_hint_y: 1
+
+            Label:
+                id: label2
+                size_hint_x: 3
+                font_size: 20
+                text: "Text editing by IME"
+
+            Label:
+                id: label3
+                size_hint_x: 7
+                #color: 0,1,0,1 # rgba
+                font_size: 20
+                text:text_box.testtext
+
+                canvas.before:
+                    Color:
+                        rgb: 0.5765 ,0.5765 ,0.5843
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+        BoxLayout:
+            size_hint_y: 4
+
+            TextInputIME:
+                id: text_box
+                size_hint_x: 70
+                font_size: 68
+                focus: True
+                on_text_validate: root.buttonClicked()
+            Button:
+                id: button1
+                size_hint_x: 30
+                text: "OK"
+                font_size: 68
+                on_press: root.buttonClicked()
